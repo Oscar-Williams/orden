@@ -211,6 +211,38 @@ def shut_dialogs(pid: int) -> list[dict[str, Any]]:
     return up
 
 
+def page_stack() -> None:
+    try:
+        from devtools import Session, targets
+        found = targets(9333)
+    except Exception as error:  # noqa: BLE001
+        print(f"cdp| no targets: {error}", flush=True)
+        return
+    for one in found:
+        print(f"cdp| target {one.get('type')} {one.get('url', '')[:120]}", flush=True)
+    for one in found:
+        if one.get("type") != "page" or "tauri.localhost" not in one.get("url", ""):
+            continue
+        try:
+            page = Session(one)
+            print(f"cdp| evaluate: {page.call('Runtime.evaluate', {'expression': '1 + 1', 'returnByValue': True}, 4)}", flush=True)
+            print(f"cdp| enable: {str(page.call('Debugger.enable', {}, 6))[:200]}", flush=True)
+            print(f"cdp| pause: {page.call('Debugger.pause', {}, 6)}", flush=True)
+            page.listen(6)
+            for event in page.events:
+                if event.get("method") != "Debugger.paused":
+                    continue
+                for frame in event["params"].get("callFrames", [])[:40]:
+                    at = frame.get("location", {})
+                    print(f"cdp| at {frame.get('functionName') or '(anon)'} {frame.get('url', '').split('/')[-1]}:{at.get('lineNumber', 0) + 1}:{at.get('columnNumber', 0) + 1}", flush=True)
+                for frame in event["params"].get("asyncStackTrace", {}).get("callFrames", [])[:20]:
+                    print(f"cdp| async {frame.get('functionName') or '(anon)'} {frame.get('url', '').split('/')[-1]}:{frame.get('lineNumber', 0) + 1}:{frame.get('columnNumber', 0) + 1}", flush=True)
+            print(f"cdp| events {[one.get('method') for one in page.events][:30]}", flush=True)
+            page.call("Debugger.resume", {}, 4)
+        except Exception as error:  # noqa: BLE001
+            print(f"cdp| failed: {error}", flush=True)
+
+
 def stacks(exe: pathlib.Path, pid: int) -> None:
     kits = pathlib.Path(r"C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\cdb.exe")
     if not kits.exists():
@@ -298,6 +330,7 @@ def main() -> int:
                 elif time.monotonic() - began > 3:
                     slow.append(f"step {step}: a plain question took {time.monotonic() - began:.1f} s")
             if wrong:
+                page_stack()
                 stacks(args.exe, process.pid)
                 time.sleep(20)
                 late = app.eval("return nib.workspace.tabs.length", 15)
@@ -318,7 +351,7 @@ def main() -> int:
         subprocess.run(["taskkill", "/F", "/T", "/IM", "msedgewebview2.exe"], capture_output=True, check=False)
         time.sleep(3)
         if wrong:
-            print("last steps: " + " | ".join(trail[-30:]), flush=True)
+            print("last steps: " + " | ".join(trail[-80:]), flush=True)
         site.shutdown()
         for line in drive.stalls(args.identifier):
             print(line, flush=True)

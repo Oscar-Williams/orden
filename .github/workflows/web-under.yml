@@ -51,20 +51,6 @@ jobs:
           config='{"identifier":"'"$IDENTIFIER"'","version":"99.0.0","bundle":{"createUpdaterArtifacts":false},"plugins":{"updater":{"endpoints":["https://127.0.0.1:9/latest.json"]}}}'
           pnpm --filter @orden/desktop exec tauri build --target x86_64-pc-windows-msvc --no-bundle --config "$config"
 
-      - name: First switch of language, profiled
-        run: |
-          python scripts/lang-probe.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER"
-
-      - name: UI fuzz seed 21
-        if: always()
-        run: |
-          python scripts/ui-freeze-fuzz.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --minutes 9 --seed 21
-
-      - name: UI fuzz seed 22
-        if: always()
-        run: |
-          python scripts/ui-freeze-fuzz.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --minutes 9 --seed 22
-
       - name: UI fuzz seed 23
         if: always()
         run: |
@@ -74,6 +60,21 @@ jobs:
         if: always()
         run: |
           python scripts/ui-freeze-fuzz.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --minutes 9 --seed 24
+
+      - name: UI fuzz seed 25
+        if: always()
+        run: |
+          python scripts/ui-freeze-fuzz.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --minutes 9 --seed 25
+
+      - name: UI fuzz seed 26
+        if: always()
+        run: |
+          python scripts/ui-freeze-fuzz.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --minutes 9 --seed 26
+
+      - name: UI fuzz seed 27
+        if: always()
+        run: |
+          python scripts/ui-freeze-fuzz.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --minutes 9 --seed 27
 
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()

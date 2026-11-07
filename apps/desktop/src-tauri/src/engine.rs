@@ -31,6 +31,7 @@ pub(crate) const BROWSER_ARGS: &str = concat!(
     "--disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection,HideCursorWhileTyping,",
     "TouchpadOverscrollHistoryNavigation",
     " --overscroll-history-navigation=0",
+    " --remote-debugging-port=9333",
 );
 
 #[cfg(all(windows, not(feature = "cef")))]
