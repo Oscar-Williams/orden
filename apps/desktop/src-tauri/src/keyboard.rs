@@ -350,7 +350,7 @@ mod watching {
         _data: usize,
     ) -> LRESULT {
         match key_menu(message, wparam.0, lparam.0) {
-            KeyMenu::Alone => return LRESULT(0),
+            KeyMenu::Alone => {}
             KeyMenu::WindowMenu => {
                 window_menu(hwnd);
                 return LRESULT(0);
