@@ -49,6 +49,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
 
 SCENES = [
+    ("alert then go elsewhere", "alert", "elsewhere"),
+    ("confirm then go elsewhere", "confirm", "elsewhere"),
+    ("frames then go elsewhere", "frames", "elsewhere"),
+    ("alert then go elsewhere and back", "alert", "elsewhere back"),
+    ("leave then go elsewhere", "leave", "elsewhere"),
     ("alert then close", "alert", "close"),
     ("alert then go", "alert", "go"),
     ("alert then reload", "alert", "reload"),
@@ -71,6 +76,7 @@ def main() -> int:
     site = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Handler)
     threading.Thread(target=site.serve_forever, daemon=True).start()
     origin = f"http://127.0.0.1:{site.server_address[1]}"
+    other = f"http://localhost:{site.server_address[1]}"
     config = drive.config_of(args.identifier)
     shutil.rmtree(config, ignore_errors=True)
     config.mkdir(parents=True, exist_ok=True)
@@ -106,6 +112,13 @@ def main() -> int:
                 time.sleep(1.2)
                 t = json.dumps(tab)
                 if then == "close":
+                    app.eval(f"nib.workspace.close({t}); return true", 20)
+                elif then.startswith("elsewhere"):
+                    app.eval(f"nib.pages.go({t}, {json.dumps(other + '/plain?far')}); return true", 20)
+                    time.sleep(1)
+                    if then.endswith("back"):
+                        app.eval(f"nib.workspace.goBack({t}, 'plain'); return true", 20)
+                        time.sleep(1)
                     app.eval(f"nib.workspace.close({t}); return true", 20)
                 elif then == "go":
                     app.eval(f"nib.pages.go({t}, {json.dumps(origin + '/plain?after')}); return true", 20)
