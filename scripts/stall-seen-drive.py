@@ -93,8 +93,12 @@ def main() -> int:
         drive.forward(process.pid)
         time.sleep(0.5)
         press(user32, ALT)
-        time.sleep(3.0)
+        time.sleep(1.0)
         hidden = alt.in_menu(user32, hwnd)
+        asked = time.monotonic()
+        during = app.eval("return 1 + 1", 4)
+        print(f"during the hidden loop: menu mode {hidden}, the page said {during} in {time.monotonic() - asked:.1f} s, Windows: {drive.window_answers(process.pid) or 'answers'}", flush=True)
+        time.sleep(1.0)
         press(user32, ESCAPE)
         time.sleep(2.0)
         said = app.eval("return 1 + 1", 8)
@@ -139,6 +143,10 @@ def main() -> int:
             pass
         shutil.rmtree(spaces, ignore_errors=True)
 
+    for log in log_dir(args.identifier).glob("*"):
+        print(f"log file {log} {log.stat().st_size} bytes", flush=True)
+        for line in log.read_text(encoding="utf-8", errors="replace").splitlines()[-25:]:
+            print(f"  | {line}", flush=True)
     print("all stall lines:", flush=True)
     for line in stall_lines(args.identifier):
         print(f"  {line}", flush=True)
