@@ -3475,4 +3475,11 @@ export const pa: Dictionary = {
   'Can edit': 'ਸੋਧ ਸਕਦੇ ਹਨ',
   'Can manage': 'ਪ੍ਰਬੰਧ ਕਰ ਸਕਦੇ ਹਨ',
   '{from} invited you: {role}': '{from} ਨੇ ਤੁਹਾਨੂੰ ਸੱਦਿਆ: {role}',
+  Privacy: 'ਪਰਦੇਦਾਰੀ',
+  'Send crash and freeze reports': 'ਕ੍ਰੈਸ਼ ਅਤੇ ਫ੍ਰੀਜ਼ ਰਿਪੋਰਟਾਂ ਭੇਜੋ',
+  'When Orden crashes or freezes, it sends what it was doing and where in its own code, with names, paths, addresses and passwords taken out, and never your notes.':
+    'ਜਦੋਂ Orden ਕ੍ਰੈਸ਼ ਹੁੰਦਾ ਹੈ ਜਾਂ ਰੁਕ ਜਾਂਦਾ ਹੈ, ਇਹ ਭੇਜਦਾ ਹੈ ਕਿ ਇਹ ਕੀ ਕਰ ਰਿਹਾ ਸੀ ਅਤੇ ਆਪਣੇ ਕੋਡ ਵਿੱਚ ਕਿੱਥੇ ਸੀ, ਨਾਂ, ਪਾਥ, ਪਤੇ ਅਤੇ ਪਾਸਵਰਡ ਹਟਾ ਕੇ। ਤੁਹਾਡੇ ਨੋਟ ਕਦੇ ਨਹੀਂ।',
+  'Turn off in Settings': 'ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਬੰਦ ਕਰੋ',
+  'Sends what Orden was doing when it crashed or froze; never notes, names, paths or passwords.':
+    'Orden ਕ੍ਰੈਸ਼ ਜਾਂ ਰੁਕਣ ਵੇਲੇ ਕੀ ਕਰ ਰਿਹਾ ਸੀ ਇਹ ਭੇਜਦਾ ਹੈ; ਨੋਟ, ਨਾਂ, ਪਾਥ ਜਾਂ ਪਾਸਵਰਡ ਕਦੇ ਨਹੀਂ।',
 }

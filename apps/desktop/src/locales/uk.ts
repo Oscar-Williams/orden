@@ -3604,4 +3604,11 @@ export const uk: Dictionary = {
   'Can edit': 'Може редагувати',
   'Can manage': 'Може керувати',
   '{from} invited you: {role}': '{from} запрошує вас: {role}',
+  Privacy: 'Конфіденційність',
+  'Send crash and freeze reports': 'Надсилати звіти про збої та зависання',
+  'When Orden crashes or freezes, it sends what it was doing and where in its own code, with names, paths, addresses and passwords taken out, and never your notes.':
+    'Коли Orden падає або зависає, він надсилає, що робив і де у власному коді, без імен, шляхів, адрес і паролів. Ніколи ваші нотатки.',
+  'Turn off in Settings': 'Вимкнути в налаштуваннях',
+  'Sends what Orden was doing when it crashed or froze; never notes, names, paths or passwords.':
+    'Надсилає, що робив Orden під час збою чи зависання; ніколи нотатки, імена, шляхи чи паролі.',
 }

@@ -3466,4 +3466,11 @@ export const ps: Dictionary = {
   'Can edit': 'سمولای شي',
   'Can manage': 'اداره کولای شي',
   '{from} invited you: {role}': '{from} تاسو وبللئ: {role}',
+  Privacy: 'محرمیت',
+  'Send crash and freeze reports': 'د ماتیدو او درېدو راپورونه ولېږه',
+  'When Orden crashes or freezes, it sends what it was doing and where in its own code, with names, paths, addresses and passwords taken out, and never your notes.':
+    'کله چې Orden مات شي یا ودرېږي، دا لېږي چې څه یې کول او په خپل کوډ کې چېرته و، د نومونو، لارو، پتو او پټنومونو له لرې کولو سره. هېڅکله ستاسو یادښتونه نه.',
+  'Turn off in Settings': 'په امستنو کې یې بند کړئ',
+  'Sends what Orden was doing when it crashed or froze; never notes, names, paths or passwords.':
+    'لېږي چې Orden د ماتېدو یا درېدو پر مهال څه کول؛ هېڅکله یادښتونه، نومونه، لارې یا پټنومونه نه.',
 }

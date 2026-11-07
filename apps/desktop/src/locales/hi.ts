@@ -3467,4 +3467,11 @@ export const hi: Dictionary = {
   'Can edit': 'संपादित कर सकते हैं',
   'Can manage': 'प्रबंधित कर सकते हैं',
   '{from} invited you: {role}': '{from} ने आपको न्योता दिया: {role}',
+  Privacy: 'गोपनीयता',
+  'Send crash and freeze reports': 'क्रैश और फ़्रीज़ की रिपोर्ट भेजें',
+  'When Orden crashes or freezes, it sends what it was doing and where in its own code, with names, paths, addresses and passwords taken out, and never your notes.':
+    'जब Orden क्रैश होता है या अटक जाता है, तो वह भेजता है कि वह क्या कर रहा था और अपने कोड में कहाँ था, नाम, पाथ, पते और पासवर्ड हटाकर। आपके नोट कभी नहीं।',
+  'Turn off in Settings': 'सेटिंग में बंद करें',
+  'Sends what Orden was doing when it crashed or froze; never notes, names, paths or passwords.':
+    'Orden के क्रैश या अटकने पर वह क्या कर रहा था, यह भेजता है; नोट, नाम, पाथ या पासवर्ड कभी नहीं।',
 }

@@ -3508,4 +3508,11 @@ export const sw: Dictionary = {
   'Can edit': 'Anaweza kuhariri',
   'Can manage': 'Anaweza kusimamia',
   '{from} invited you: {role}': '{from} amekualika: {role}',
+  Privacy: 'Faragha',
+  'Send crash and freeze reports': 'Tuma ripoti za kuharibika na kukwama',
+  'When Orden crashes or freezes, it sends what it was doing and where in its own code, with names, paths, addresses and passwords taken out, and never your notes.':
+    'Orden ikiharibika au kukwama, hutuma ilichokuwa ikifanya na mahali ilipokuwa katika msimbo wake, bila majina, njia, anwani na manenosiri. Kamwe si madokezo yako.',
+  'Turn off in Settings': 'Zima katika Mipangilio',
+  'Sends what Orden was doing when it crashed or froze; never notes, names, paths or passwords.':
+    'Hutuma Orden ilichokuwa ikifanya ilipoharibika au kukwama; kamwe si madokezo, majina, njia au manenosiri.',
 }

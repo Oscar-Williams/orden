@@ -3381,4 +3381,11 @@ export const ja: Dictionary = {
   'Can edit': '編集可',
   'Can manage': '管理可',
   '{from} invited you: {role}': '{from} から招待されました: {role}',
+  Privacy: 'プライバシー',
+  'Send crash and freeze reports': 'クラッシュとフリーズのレポートを送信',
+  'When Orden crashes or freezes, it sends what it was doing and where in its own code, with names, paths, addresses and passwords taken out, and never your notes.':
+    'Orden がクラッシュまたはフリーズしたとき、何をしていて自身のコードのどこにいたかを、名前、パス、アドレス、パスワードを除いて送信します。メモは決して送りません。',
+  'Turn off in Settings': '設定でオフにする',
+  'Sends what Orden was doing when it crashed or froze; never notes, names, paths or passwords.':
+    'クラッシュやフリーズ時に Orden が何をしていたかを送信します。メモ、名前、パス、パスワードは送りません。',
 }

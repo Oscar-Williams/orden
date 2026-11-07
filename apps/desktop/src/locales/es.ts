@@ -3566,4 +3566,11 @@ export const es: Dictionary = {
   'Can edit': 'Puede editar',
   'Can manage': 'Puede administrar',
   '{from} invited you: {role}': '{from} te ha invitado: {role}',
+  Privacy: 'Privacidad',
+  'Send crash and freeze reports': 'Enviar informes de fallos y bloqueos',
+  'When Orden crashes or freezes, it sends what it was doing and where in its own code, with names, paths, addresses and passwords taken out, and never your notes.':
+    'Cuando Orden falla o se bloquea, envía lo que estaba haciendo y en qué parte de su propio código, sin nombres, rutas, direcciones ni contraseñas. Nunca tus notas.',
+  'Turn off in Settings': 'Desactivar en Ajustes',
+  'Sends what Orden was doing when it crashed or froze; never notes, names, paths or passwords.':
+    'Envía qué hacía Orden al fallar o bloquearse; nunca notas, nombres, rutas ni contraseñas.',
 }

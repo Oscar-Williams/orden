@@ -3514,4 +3514,11 @@ export const ml: Dictionary = {
   'Can edit': 'എഡിറ്റ് ചെയ്യാം',
   'Can manage': 'നിയന്ത്രിക്കാം',
   '{from} invited you: {role}': '{from} നിങ്ങളെ ക്ഷണിച്ചു: {role}',
+  Privacy: 'സ്വകാര്യത',
+  'Send crash and freeze reports': 'ക്രാഷ്, ഫ്രീസ് റിപ്പോർട്ടുകൾ അയയ്ക്കുക',
+  'When Orden crashes or freezes, it sends what it was doing and where in its own code, with names, paths, addresses and passwords taken out, and never your notes.':
+    'Orden ക്രാഷ് ആകുമ്പോഴോ ഫ്രീസ് ആകുമ്പോഴോ, അത് എന്ത് ചെയ്യുകയായിരുന്നുവെന്നും സ്വന്തം കോഡിൽ എവിടെയായിരുന്നുവെന്നും പേരുകൾ, പാതകൾ, വിലാസങ്ങൾ, പാസ്‌വേഡുകൾ എന്നിവ നീക്കി അയയ്ക്കുന്നു. നിങ്ങളുടെ കുറിപ്പുകൾ ഒരിക്കലും ഇല്ല.',
+  'Turn off in Settings': 'ക്രമീകരണങ്ങളിൽ ഓഫാക്കുക',
+  'Sends what Orden was doing when it crashed or froze; never notes, names, paths or passwords.':
+    'Orden ക്രാഷ് ആകുമ്പോഴോ ഫ്രീസ് ആകുമ്പോഴോ എന്ത് ചെയ്യുകയായിരുന്നുവെന്ന് അയയ്ക്കുന്നു; കുറിപ്പുകൾ, പേരുകൾ, പാതകൾ, പാസ്‌വേഡുകൾ ഒരിക്കലുമില്ല.',
 }

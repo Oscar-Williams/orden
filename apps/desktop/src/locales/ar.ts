@@ -3656,4 +3656,11 @@ export const ar: Dictionary = {
   'Can edit': 'يمكنه التعديل',
   'Can manage': 'يمكنه الإدارة',
   '{from} invited you: {role}': 'دعاك {from}: {role}',
+  Privacy: 'الخصوصية',
+  'Send crash and freeze reports': 'إرسال تقارير الأعطال والتجمّد',
+  'When Orden crashes or freezes, it sends what it was doing and where in its own code, with names, paths, addresses and passwords taken out, and never your notes.':
+    'عندما يتعطّل Orden أو يتجمّد، يرسل ما كان يفعله وأين كان في شيفرته، بعد حذف الأسماء والمسارات والعناوين وكلمات المرور. لا يرسل ملاحظاتك أبدًا.',
+  'Turn off in Settings': 'إيقافه من الإعدادات',
+  'Sends what Orden was doing when it crashed or froze; never notes, names, paths or passwords.':
+    'يرسل ما كان Orden يفعله عند تعطّله أو تجمّده؛ دون الملاحظات أو الأسماء أو المسارات أو كلمات المرور.',
 }

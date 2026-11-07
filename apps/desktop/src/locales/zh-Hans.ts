@@ -3301,4 +3301,11 @@ export const zhHans: Dictionary = {
   'Can edit': '可编辑',
   'Can manage': '可管理',
   '{from} invited you: {role}': '{from} 邀请了你：{role}',
+  Privacy: '隐私',
+  'Send crash and freeze reports': '发送崩溃和卡死报告',
+  'When Orden crashes or freezes, it sends what it was doing and where in its own code, with names, paths, addresses and passwords taken out, and never your notes.':
+    'Orden 崩溃或卡死时，会发送它当时在做什么以及在自身代码中的位置，并去除名称、路径、地址和密码。绝不发送你的笔记。',
+  'Turn off in Settings': '在设置中关闭',
+  'Sends what Orden was doing when it crashed or froze; never notes, names, paths or passwords.':
+    '发送 Orden 崩溃或卡死时正在做什么；绝不发送笔记、名称、路径或密码。',
 }

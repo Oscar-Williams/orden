@@ -3402,4 +3402,11 @@ export const am: Dictionary = {
   'Can edit': 'ማርትዕ ይችላል',
   'Can manage': 'ማስተዳደር ይችላል',
   '{from} invited you: {role}': '{from} ጋብዞሃል: {role}',
+  Privacy: 'ግላዊነት',
+  'Send crash and freeze reports': 'የብልሽት እና የመቆም ሪፖርቶችን ላክ',
+  'When Orden crashes or freezes, it sends what it was doing and where in its own code, with names, paths, addresses and passwords taken out, and never your notes.':
+    'Orden ሲበላሽ ወይም ሲቆም፣ ምን እየሰራ እንደነበር እና በራሱ ኮድ ውስጥ የት እንደነበር ይልካል፤ ስሞች፣ መንገዶች፣ አድራሻዎች እና የይለፍ ቃሎች ተወግደው። ማስታወሻዎችዎን በጭራሽ አይልክም።',
+  'Turn off in Settings': 'በቅንብሮች ውስጥ አጥፋ',
+  'Sends what Orden was doing when it crashed or froze; never notes, names, paths or passwords.':
+    'Orden ሲበላሽ ወይም ሲቆም ምን እየሰራ እንደነበር ይልካል፤ ማስታወሻዎች፣ ስሞች፣ መንገዶች ወይም የይለፍ ቃሎች አይላኩም።',
 }
