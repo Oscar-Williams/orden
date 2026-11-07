@@ -35,6 +35,13 @@ pub fn web_dialog_answer(app: tauri::AppHandle, id: u64, accept: bool, text: Opt
 #[cfg(all(windows, not(feature = "cef")))]
 pub use engine::{forget, listen};
 
+pub fn dismiss(app: &tauri::AppHandle, tab: &str) {
+    use tauri::Manager as _;
+
+    let tab = tab.to_owned();
+    let _ = app.run_on_main_thread(move || forget(&tab));
+}
+
 #[cfg(all(windows, not(feature = "cef")))]
 mod engine {
     use std::cell::RefCell;
