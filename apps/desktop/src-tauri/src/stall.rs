@@ -76,6 +76,10 @@ pub fn start(app: &AppHandle) {
 }
 
 fn watch_once(app: &AppHandle, watched: &Watched) {
+    let probe = Instant::now();
+    let paged = watched.paged(Duration::from_secs(3));
+    let looped = watched.looped(Duration::from_secs(3));
+    say(app, "info", &format!("stall-debug up {} paged {:?} looped {:?} in {} ms", PAGE_UP.load(Ordering::Relaxed), paged, looped, probe.elapsed().as_millis()));
     let asked = Instant::now();
     let Answer::Late(how) = watched.answers(STALL) else {
         return;
