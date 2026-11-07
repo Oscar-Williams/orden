@@ -30,7 +30,7 @@ jobs:
   drive:
     if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: windows-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     permissions:
       contents: read
     defaults:
@@ -51,31 +51,29 @@ jobs:
           config='{"identifier":"'"$IDENTIFIER"'","version":"99.0.0","bundle":{"createUpdaterArtifacts":false},"plugins":{"updater":{"endpoints":["https://127.0.0.1:9/latest.json"]}}}'
           pnpm --filter @orden/desktop exec tauri build --target x86_64-pc-windows-msvc --no-bundle --config "$config"
 
-      - name: Driven
+      - name: First switch of language, profiled
         run: |
-          python -m pip install --quiet pillow comtypes
-          python scripts/web-under-drive.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --out drive
+          python scripts/lang-probe.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER"
 
-      - name: The overview, filmed
+      - name: UI fuzz seed 21
         if: always()
         run: |
-          python -m pip install --quiet pillow mss numpy
-          python scripts/overview-drive.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --out overview
+          python scripts/ui-freeze-fuzz.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --minutes 9 --seed 21
 
-      - name: Terminals and the file explorer worked hard, the window watched
+      - name: UI fuzz seed 22
         if: always()
         run: |
-          python scripts/tools-freeze-drive.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER"
+          python scripts/ui-freeze-fuzz.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --minutes 9 --seed 22
 
-      - name: A tap of Alt or F10 leaves the window answering
+      - name: UI fuzz seed 23
         if: always()
         run: |
-          python scripts/alt-alone-drive.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER"
+          python scripts/ui-freeze-fuzz.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --minutes 9 --seed 23
 
-      - name: Windowed, for UI Automation
+      - name: UI fuzz seed 24
         if: always()
         run: |
-          python scripts/web-under-drive.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --out windowed --windowed
+          python scripts/ui-freeze-fuzz.py --exe "$PWD/apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/nib.exe" --identifier "$IDENTIFIER" --minutes 9 --seed 24
 
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
