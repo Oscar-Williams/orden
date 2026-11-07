@@ -29,7 +29,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        run: ['stray off visual', 'stray on visual']
+        run: ['dialogs a', 'dialogs b', 'dialogs c']
     runs-on: windows-latest
     timeout-minutes: 90
     permissions:
@@ -82,6 +82,7 @@ jobs:
           set -- ${{ matrix.run }}
           args="--disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection,HideCursorWhileTyping,TouchpadOverscrollHistoryNavigation --overscroll-history-navigation=0 --renderer-process-limit=1"
           case "${{ matrix.run }}" in
+            dialogs*) python scripts/dialog-probe.py --exe "$EXE" --identifier "$IDENTIFIER" ;;
             "stray off visual") python scripts/stray-probe.py --exe "$EXE" --identifier "$IDENTIFIER" --off ;;
             "stray on visual") python scripts/stray-probe.py --exe "$EXE" --identifier "$IDENTIFIER" ;;
             "stray off windowed") python scripts/stray-probe.py --exe "$EXE" --identifier "$IDENTIFIER" --off --windowed ;;
