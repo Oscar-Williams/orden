@@ -286,7 +286,14 @@ impl Link {
 
             let seen = self.seen_now();
             if seen.standing == Standing::Paired && seen.window.is_none() {
-                if let Some(endpoint) = self.held().endpoint.clone() {
+                // Clone the endpoint with the guard already dropped: edition
+                // 2021 keeps the scrutinee temporary of an `if let` alive to
+                // the end of the whole `if let`, and `ask_window` → `change`
+                // re-locks `held` on this thread. The old shape held `held`
+                // across `ask_window` and waited on itself forever once the
+                // window answered (#1431).
+                let endpoint = self.held().endpoint.clone();
+                if let Some(endpoint) = endpoint {
                     self.ask_window(&endpoint, Duration::ZERO);
                 }
             }
