@@ -23,11 +23,6 @@ const PAGE: &str = "main";
 
 static PAGE_UP: AtomicBool = AtomicBool::new(false);
 
-pub fn page_loading(label: &str, up: bool) {
-    if label == PAGE {
-        PAGE_UP.store(up, Ordering::Relaxed);
-    }
-}
 
 pub struct Doing(());
 
@@ -78,8 +73,7 @@ pub fn start(app: &AppHandle) {
 fn watch_once(app: &AppHandle, watched: &Watched) {
     let probe = Instant::now();
     let paged = watched.paged(Duration::from_secs(3));
-    let looped = watched.looped(Duration::from_secs(3));
-    say(app, "info", &format!("stall-debug up {} paged {:?} looped {:?} in {} ms", PAGE_UP.load(Ordering::Relaxed), paged, looped, probe.elapsed().as_millis()));
+    say(app, "info", &format!("stall-debug up {} paged {:?} in {} ms", PAGE_UP.load(Ordering::Relaxed), paged, probe.elapsed().as_millis()));
     let asked = Instant::now();
     let Answer::Late(how) = watched.answers(STALL) else {
         return;
@@ -227,9 +221,6 @@ impl Watched {
     }
 
     fn paged(&self, within: Duration) -> Answer {
-        if !PAGE_UP.load(Ordering::Relaxed) {
-            return Answer::Answered;
-        }
         let Some(page) = self.app.get_webview(PAGE) else {
             return Answer::Answered;
         };
@@ -243,8 +234,14 @@ impl Watched {
             return Answer::Answered;
         }
         match heard.recv_timeout(within) {
-            Ok(()) | Err(std::sync::mpsc::RecvTimeoutError::Disconnected) => Answer::Answered,
-            Err(std::sync::mpsc::RecvTimeoutError::Timeout) => Answer::Late(Late::Page),
+            Ok(()) => {
+                PAGE_UP.store(true, Ordering::Relaxed);
+                Answer::Answered
+            }
+            Err(std::sync::mpsc::RecvTimeoutError::Timeout) if PAGE_UP.load(Ordering::Relaxed) => {
+                Answer::Late(Late::Page)
+            }
+            Err(_) => Answer::Answered,
         }
     }
 

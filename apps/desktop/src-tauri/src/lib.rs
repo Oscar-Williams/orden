@@ -769,10 +769,6 @@ fn first_window(handle: &tauri::AppHandle) {
 fn links_out_and_in(builder: tauri::Builder<Engine>) -> tauri::Builder<Engine> {
     #[cfg(desktop)]
     let builder = builder.on_page_load(|webview, payload| {
-        stall::page_loading(
-            webview.label(),
-            payload.event() == tauri::webview::PageLoadEvent::Finished,
-        );
         if payload.event() == tauri::webview::PageLoadEvent::Started {
             if let Some(waiting) = webview.try_state::<endpoint::Waiting>() {
                 waiting.forget(webview.label());
