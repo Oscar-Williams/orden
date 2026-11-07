@@ -77,6 +77,7 @@ export default defineConfig(({ command, mode }) => ({
   envPrefix: ['VITE_', 'TAURI_ENV_*'],
   build: {
     target: 'esnext',
+    minify: false,
     sourcemap: !!process.env.TAURI_ENV_DEBUG,
     rollupOptions: {
       input: {

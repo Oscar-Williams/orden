@@ -284,8 +284,9 @@ export class Page {
 
 class Pages {
   private readonly held = new Map<string, Page>()
+  readonly born = new Map<string, string>()
 
-  private readonly gone = new Set<string>()
+  readonly gone = new Set<string>()
 
   private listening: Promise<void> | null = null
 
@@ -305,6 +306,7 @@ class Pages {
     void this.listen()
 
     const made = new Page()
+    this.born.set(tabId, new Error().stack ?? '')
     this.held.set(tabId, made)
     return made
   }
